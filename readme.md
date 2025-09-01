@@ -5,11 +5,16 @@
 git clone https://github.com/Diglander/CRUD_tasks.git
 cd CRUD_tasks
 pip install -r requirements.txt
+
+ЗАПУСК
 uvicorn app:app --reload
+ИЛИ
+python -m uvicorn app:app --reload (на windows)
 ```
 
 ## Docker
 ```bash
 docker build -t crud_tasks .
 docker run -p 8000:8000 crud_tasks
+
 ```
