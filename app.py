@@ -1,9 +1,11 @@
 from fastapi import FastAPI, HTTPException, Query
 from typing import List 
-from models import CreateTask, UpdateTask, TaskStatus, Task, Importance
+from models import CreateTask, UpdateTask, TaskStatus, Task, Importance #для request`ов к эндпоинтам прописали проверку через pydantic
+
 
 app = FastAPI(title="CRUD_tasks")
 
+#Храним в словаре для тестового сущности
 tasks = {}
 id_count = 1
 
@@ -17,6 +19,7 @@ def create_task(request_task: CreateTask):
     return new_task
 
 
+#Два query-параметра для получения списка (оба enum) 
 @app.get("/list_tasks", response_model=List[Task])
 def tasks_list(
     status: TaskStatus | None = Query(None, description = "Фильтр по статусу"),
@@ -62,4 +65,5 @@ def delete_task(id: int):
     tasks.pop(id)
 
     return None
+
 
