@@ -9,8 +9,7 @@ id_count = 1
 
 
 @app.post("/create_task", response_model=Task)
-def create_task(
-    request_task: CreateTask):
+def create_task(request_task: CreateTask):
     global id_count
     new_task = Task(id=id_count, **request_task.dict())
     tasks[id_count] = new_task
@@ -63,3 +62,4 @@ def delete_task(id: int):
     tasks.pop(id)
 
     return None
+
