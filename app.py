@@ -44,7 +44,6 @@ def update_task(id: int, updated_task: UpdateTask):
         raise HTTPException(404, "Not found")
     task = tasks[id]  
     
-    # Используем правильные имена полей и отдельные if
     if updated_task.name is not None: 
         task.name = updated_task.name
     if updated_task.time is not None: 
@@ -62,4 +61,5 @@ def delete_task(id: int):
     if id not in tasks:
         raise HTTPException(404, "Not found")
     tasks.pop(id)
+
     return None
